@@ -2,9 +2,6 @@
 #include<math.h>
 #include<stdlib.h>
 
-#define DX 0.1
-#define L  8
-#define DT 1e-4
 #define N  160
 
 void kdvExact(double x[], double t, double v, double x0) {

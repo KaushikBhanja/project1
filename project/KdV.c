@@ -14,7 +14,7 @@ void kdvExact(double x[], double t, double v, double x0);
 int main(void) {
 
 	int i, j;
-	double t;
+	double t, plot1, plot2;
 	double *x    = (double *) malloc(N * sizeof(double));
 	double *xnew = (double *) malloc(N * sizeof(double));
 
@@ -27,7 +27,7 @@ int main(void) {
 	 * Initial Conditions
 	 */
 	kdvExact(x, 0., 16., 4.);
-	kdvExact(xnew, 0, 4., -4.);
+	kdvExact(xnew, 0., 4., -4.);
 
 	for(i = 0; i < N; i++) {
 		x[i] = x[i] + xnew[i];
@@ -39,7 +39,10 @@ int main(void) {
 
 		if((j % 100) == 0) {
 	        for(i = 0; i < N; i++) {
-		        printf("%e %e\n", -L + i * DX, x[i]);
+				plot1 = -L + i*DX;
+				plot2 = x[i];
+				printf("%e \n", plot2);
+		        //printf("%e %e\n", -L + i * DX, x[i]);
 	        }
 			printf("\n\n");
 		}
