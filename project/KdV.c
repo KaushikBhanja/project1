@@ -34,6 +34,7 @@ int main(void) {
 	kdvExact(xnew, 0, 4., -4.);
 
 	double t3 = Wtime();
+	#pragma omp parallel for
 	for(i = 0; i < N; i++) {
 		x[i] = x[i] + xnew[i];
 	}
@@ -69,7 +70,7 @@ int main(void) {
 		j++;
 		t += DT;
 	}
-	
+
 	free(x);
 	free(xnew);
 
