@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 3.16)
 
 project(project)
 
+find_package(OpenMP REQUIRED)
+
 add_library(project KdV.c KdV_1.c KdV_2.c KdV_3.c )
 
 link_libraries(project)
@@ -9,7 +11,7 @@ link_libraries(project)
 include(CTest)
 
 add_executable(KdV KdV.c)
-target_link_libraries(KdV PRIVATE m)
+target_link_libraries(KdV PRIVATE m OpenMP::OpenMP_C)
 
 add_executable(KdV_1 KdV_1.c)
 target_link_libraries(KdV_1 PRIVATE m)
@@ -18,5 +20,7 @@ add_executable(KdV_2 KdV_2.c)
 target_link_libraries(KdV_2 PRIVATE m)
 
 add_executable(KdV_3 KdV_3.c)
-target_link_libraries(KdV_3 PRIVATE m)
+target_link_libraries(KdV_3 PRIVATE m OpenMP::OpenMP_C)
+
+
 
